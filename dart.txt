@@ -1,0 +1,63 @@
+import 'package:flutter/material.dart';
+
+class CamposDart extends StatefulWidget {
+  const CamposDart({Key? key}) : super(key: key);
+
+  @override
+  _CamposDartState createState() => _CamposDartState();
+}
+
+class _CamposDartState extends State<CamposDart> {
+  TextEditingController _controllerUsuario = TextEditingController();
+  TextEditingController _controllerSenha = TextEditingController();
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Tela de Login"),
+        backgroundColor: Colors.black,
+      ),
+      body: Column(
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.all(30),
+            child: Image.asset("imagem/nike.png"),
+          ),
+          Padding(
+            padding: EdgeInsets.all(30),
+            child: TextField(
+              keyboardType: TextInputType.emailAddress,
+              decoration: InputDecoration(labelText: "Digite seu email"),
+              obscureText: false,
+              onSubmitted: (String e) {
+                print("Seu email é: " + e);
+              },
+              controller: _controllerUsuario,
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(30),
+            child: TextField(
+              keyboardType: TextInputType.text,
+              decoration: InputDecoration(labelText: "Digite sua senha"),
+              obscureText: true,
+              onSubmitted: (String e) {
+                print("Sua senha é: " + e);
+              },
+              controller: _controllerSenha,
+            ),
+          ),
+          // ignore: deprecated_member_use
+          RaisedButton(
+            child: Text("Logar"),
+            color: Colors.red,
+            onPressed: () {
+              print("O email digitado foi: " +_controllerUsuario.text);
+              print("A senha digitada foi: " +_controllerSenha.text);
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
